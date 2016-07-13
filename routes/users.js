@@ -15,9 +15,8 @@ router.get('/', function(req, res, next) {
         jsonRes += d;
       });
 
-      megaPosts.on('end', function() {
-        let parsed = jsonRes;
-        callback(parsed);
+      megaPosts.on('end', () => {
+        callback(jsonRes);
       });
     });
   };
