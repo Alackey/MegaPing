@@ -16,13 +16,14 @@ router.get('/', function(req, res, next) {
       });
 
       megaPosts.on('end', function() {
-        let parsed = JSON.parse(JSON.stringify(jsonRes));
+        let parsed = jsonRes;
         callback(parsed);
       });
     });
   };
 
   posts(function(allPosts) {
+    console.log(JSON.parse(allPosts).data.children[0]);
     res.send(allPosts);
   });
 
