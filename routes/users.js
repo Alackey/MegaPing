@@ -5,8 +5,13 @@ var https = require('https');
 /* GET users listing. */
 router.get('/', function(req, res, next) {
 
+  let options = {
+    'host': 'www.reddit.com',
+    'path': '/r/megalinks/new.json?limit=2'
+  }
+
   let posts = function(callback) {
-    https.get('https://www.reddit.com/r/megalinks/new.json?limit=2', function(megaPosts) {
+    https.get(options, (megaPosts) => {
 
       megaPosts.setEncoding('utf8');
 
