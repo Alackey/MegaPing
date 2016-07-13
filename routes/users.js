@@ -21,7 +21,7 @@ router.get('/', function(req, res, next) {
     });
   };
 
-  posts(function(allPosts) {
+  posts((allPosts) => {
     console.log(JSON.parse(allPosts).data.children[0]);
     res.send(allPosts);
   });
