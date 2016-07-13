@@ -10,13 +10,13 @@ router.get('/', function(req, res, next) {
 
       megaPosts.setEncoding('utf8');
 
-      var jsonRes = '';
+      let jsonRes = '';
       megaPosts.on('data', (d) => {
         jsonRes += d;
       });
 
       megaPosts.on('end', function() {
-        var parsed = JSON.parse(JSON.stringify(jsonRes));
+        let parsed = JSON.parse(JSON.stringify(jsonRes));
         callback(parsed);
       });
     });
