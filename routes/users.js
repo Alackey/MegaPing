@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
   let options = {
     'host': 'www.reddit.com',
     'path': '/r/megalinks/new.json?limit=2'
-  }
+  };
 
   let posts = function(callback) {
     https.get(options, (megaPosts) => {
