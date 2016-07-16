@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "megaping",
+    "password": "megaping",
+    "database": "megaping",
+    "host": "127.0.0.1",
+    "port": "5432",
+    "dialect": "postgres"
+  },
+  "test": {
+      "username": "alackey",
+      "password": "alackey",
+      "database": "megaping_test",
+      "host": "127.0.0.1",
+      "port": "5432",
+      "dialect": "postgres"
+  },
+  "production": {
+      "username": "alackey",
+      "password": "alackey",
+      "database": "megaping_prod",
+      "host": "127.0.0.1",
+      "port": "5432",
+      "dialect": "postgres"
+  }
+}
