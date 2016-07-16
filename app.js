@@ -56,13 +56,15 @@ app.use(function(err, req, res, next) {
 
 // Reddit API
 const snoowrap = require('snoowrap');
+let username = 'Tech_Runner';
+let password = process.env.redditPass;
 
 let r = new snoowrap({
   user_agent: 'MegaPing version .1 by /u/Tech_Runner',
   client_id: 'OLa2z3VpRgWaqw',
   client_secret: '3KGf2fAB1N28Gd0I1SHitMS0NHQ',
-  username: 'Tech_Runner',
-  password: ''
+  username: username,
+  password: password
 });
 
 module.exports.r = r;
