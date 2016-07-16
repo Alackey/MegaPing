@@ -6,7 +6,7 @@ const reddit = require('../reddit/reddit.js');
 router.get('/', function(req, res, next) {
 
   reddit.getPosts().then((posts) => {
-    res.send(posts);
+    res.render('index', {posts:posts});
   });
 });
 
