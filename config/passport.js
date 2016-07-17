@@ -20,16 +20,15 @@ module.exports = function(passport) {
     state: true,
   },
   function(accessToken, refreshToken, profile, done) {
-    process.nextTick(() => {
-      return done(null, profile);
+    process.nextTick(function() {
+      User.findOrCreate({
+        where: {
+          username: profile.name,
+          passportID: profile.id
+        }
+      })
+      .spread((user, created) => done(null, profile))
+      .error(err => done(err));
     });
-    // User.findOrCreate({
-    //   username: profile.id
-    // }.then(user => {
-    //   console.log(JSON.stringify(profile));
-    //   return done(null, user);
-    // }).catch(err => {
-    //   return done(err);
-    // }));
   }));
 };
