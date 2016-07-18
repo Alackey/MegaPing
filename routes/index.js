@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var crypto = require('crypto');
 var passport = require('passport');
+const models = require('../models');
 const reddit = require('../reddit/reddit.js');
 
 /* GET: Home Page */
@@ -20,6 +21,10 @@ router.get('/login', function(req, res){
 });
 
 router.get('/logout', function(req, res){
+  // models.User.findAll({where: {}})
+  //   .then(function(users) {
+  //     console.log('Type of users:', users[0].dataValues.username);
+  //   });
   req.logout();
   res.redirect('/');
 });

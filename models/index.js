@@ -31,7 +31,7 @@ Object.keys(db).forEach(function(modelName) {
 });
 
 sequelize.sync({
-    force: true
+    force: false
 });
 
 
