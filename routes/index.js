@@ -1,40 +1,61 @@
 var express = require('express');
-var router = express.Router();
-var crypto = require('crypto');
 var passport = require('passport');
-const models = require('../models');
-const reddit = require('../reddit/reddit.js');
+var models = require('../models');
+var reddit = require('../reddit/reddit.js');
+var app = express();
+
 
 /* GET: Home Page */
-router.get('/', function(req, res, next) {
+app.get('/', function(req, res, next) {
 
   reddit.getPosts().then((posts) => {
     res.render('index', {posts:posts, user: req.user});
   });
 });
 
+
+app.post('/searchterm', function(req, res) {
+  let modelInfo = {term: "", notifyMethod: {}};
+
+  modelInfo.term = req.body.term;
+
+  if (Object.prototype.hasOwnProperty.call(req.body, 'email')) {
+    modelInfo.notifyMethod.email = req.body.email;
+  } else if (Object.prototype.hasOwnProperty.call(req.body, 'reddit')) {
+    modelInfo.notifyMethod.redditMsg = req.body.redditMsg;
+  }
+
+  let searchTerm = models.SearchTerm.build(modelInfo);
+  models.User.findOne({
+    passportID: req.user.id
+  }).then(user => {
+    searchTerm.UserId = user.id;
+    searchTerm.save();
+  });
+
+  res.send('true');
+});
+
+
 /*
  *  Login Logout
  */
-router.get('/login', function(req, res){
+app.get('/login', function(req, res){
   res.render('login', { user: req.user });
 });
 
-router.get('/logout', function(req, res){
-  // models.User.findAll({where: {}})
-  //   .then(function(users) {
-  //     console.log('Type of users:', users[0].dataValues.username);
-  //   });
+app.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
 });
 
+
 /*
  *  Auth Routes
  */
-router.get('/auth/reddit', passport.authenticate('reddit', {duration: 'permanent'}));
+app.get('/auth/reddit', passport.authenticate('reddit', {duration: 'permanent'}));
 
-router.get('/auth/reddit/callback', passport.authenticate('reddit', {
+app.get('/auth/reddit/callback', passport.authenticate('reddit', {
   successRedirect: '/',
   failureRedirect: '/login'
 }));
@@ -45,4 +66,4 @@ function loginRequired(req, res, next) {
 }
 
 
-module.exports = router;
+module.exports = app;

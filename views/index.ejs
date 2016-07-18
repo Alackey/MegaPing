@@ -10,6 +10,15 @@
     <% } else { %>
     	<h2>Hello, <%= user.name %>.</h2>
     <% } %>
+    <a href="/login">Login page</a>
+    <form action="/searchterm" method="post">
+      Term:<br>
+      <input type="text" name="term" value="book"><br>
+      Email:<br>
+      <input type="text" name="email" value="test@test.com"><br><br>
+      <input type="submit" value="Submit">
+    </form>
+
     <h1>Posts from reddit:</h1>
     <p><%= JSON.stringify(posts) %></p>
   </body>
