@@ -14,6 +14,10 @@ module.exports = {
       notifyMethod: {
         type: Sequelize.JSON
       },
+      quality: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
