@@ -15,7 +15,7 @@ app.get('/', function(req, res, next) {
 
 
 app.post('/searchterm', function(req, res) {
-  let modelInfo = {term: "", notifyMethod: {}};
+  let modelInfo = {term: "", notifyMethod: {}, quality: null};
 
   modelInfo.term = req.body.term;
 
@@ -23,6 +23,8 @@ app.post('/searchterm', function(req, res) {
     modelInfo.notifyMethod.email = req.body.email;
   } else if (Object.prototype.hasOwnProperty.call(req.body, 'reddit')) {
     modelInfo.notifyMethod.redditMsg = req.body.redditMsg;
+  } else if (Object.prototype.hasOwnProperty.call(req.body, 'quality')) {
+    modelInfo.quality = quality;
   }
 
   let searchTerm = models.SearchTerm.build(modelInfo);
