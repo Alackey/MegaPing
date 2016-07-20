@@ -16,7 +16,16 @@ app.get('/', function(req, res, next) {
 
 /* GET: Get SearchTerms */
 app.get('/searchterm', loginRequired, function(req, res) {
-  res.send(true);
+  models.User.findOne({
+    passportID: req.user.id
+  }).then(function(user) {
+
+    models.SearchTerm.findAll({
+      where: {UserId: user.id}
+    }).then(users => {
+      res.json(users);
+    });
+  });
 });
 
 
