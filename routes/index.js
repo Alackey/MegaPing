@@ -14,7 +14,7 @@ app.get('/', function(req, res, next) {
 });
 
 
-app.post('/searchterm', function(req, res) {
+app.post('/searchterm', loginRequired, function(req, res) {
   let modelInfo = {term: "", notifyMethod: {}, quality: null};
 
   modelInfo.term = req.body.term;
