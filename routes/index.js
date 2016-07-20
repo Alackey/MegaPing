@@ -14,6 +14,13 @@ app.get('/', function(req, res, next) {
 });
 
 
+/* GET: Get SearchTerms */
+app.get('/searchterm', loginRequired, function(req, res) {
+  res.send(true);
+});
+
+
+/* POST: Add SearchTerm */
 app.post('/searchterm', loginRequired, function(req, res) {
   let modelInfo = {term: "", notifyMethod: {}, quality: null};
 
@@ -35,7 +42,7 @@ app.post('/searchterm', loginRequired, function(req, res) {
     searchTerm.save();
   });
 
-  res.send('true');
+  res.send(true);
 });
 
 
