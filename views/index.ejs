@@ -21,7 +21,44 @@
       <input type="submit" value="Submit">
     </form>
 
+    <form id="updateForm" action="/searchterm" method="put">
+      Term:<br>
+      <input type="text" name="term" value="book"><br>
+      quality:<br>
+      <input type="text" name="quality" value="720"><br>
+      ID:<br>
+      <input type="text" name="id"><br><br>
+      <input type="submit" value="Submit">
+    </form>
+
     <h1>Posts from reddit:</h1>
     <p><%= JSON.stringify(posts) %></p>
+
+    <script type="text/javascript">
+      document.getElementById("updateForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        var childNodes = document.getElementById("updateForm").childNodes;
+
+        var term, quality, id;
+
+        for (node of childNodes) {
+          if (node.name == "term") {
+            term = node.value;
+          } else if (node.name == "quality") {
+            quality = node.value;
+          } else if (node.name == "id") {
+            id = node.value;
+          }
+        }
+        console.log(term, quality, id);
+        var data = {term: term, quality: quality, id: id};
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("PUT", "/searchterm", true);
+        xhttp.setRequestHeader("Content-type", "application/json");
+        xhttp.send(JSON.stringify({data: data}));
+      });
+    </script>
   </body>
 </html>

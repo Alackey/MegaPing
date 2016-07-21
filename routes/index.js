@@ -55,6 +55,21 @@ app.post('/searchterm', loginRequired, function(req, res) {
 });
 
 
+/* PUT: Update SearchTerm */
+app.put('/searchterm', loginRequired, function(req, res) {
+  var data = req.body.data;
+
+  models.SearchTerm.update({
+    term: data.term,
+    quality: data.quality
+  },{
+    where: {id: data.id}
+  }).then(searchterm => {
+    res.send(true);
+  });
+});
+
+
 /*
  *  Login Logout
  */
