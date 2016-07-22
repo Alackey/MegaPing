@@ -57,17 +57,33 @@ app.post('/searchterm', loginRequired, function(req, res) {
 
 /* PUT: Update SearchTerm */
 app.put('/searchterm', loginRequired, function(req, res) {
-  var data = req.body.data;
+  var { term, quality, notifyMethod, id } = req.body.data;
 
   models.SearchTerm.update({
-    term: data.term,
-    quality: data.quality
+    term: term,
+    quality: quality,
+    notifyMethod: notifyMethod
   },{
-    where: {id: data.id}
+    where: {id: id}
   }).then(searchterm => {
     res.send(true);
   });
 });
+
+
+// /* DELETE: Delete SearchTerm */
+// app.put('/searchterm', loginRequired, function(req, res) {
+//   var { term, quality, id } = req.body.data;
+//
+//   models.SearchTerm.update({
+//     term: term,
+//     quality: quality
+//   },{
+//     where: {id: id}
+//   }).then(searchterm => {
+//     res.send(true);
+//   });
+// });
 
 
 /*

@@ -52,7 +52,12 @@
           }
         }
         console.log(term, quality, id);
-        var data = {term: term, quality: quality, id: id};
+        var data = {
+          term: term,
+          quality: quality,
+          notifyMethod: {email: "test@test.com"},
+          id: id
+        };
 
         var xhttp = new XMLHttpRequest();
         xhttp.open("PUT", "/searchterm", true);
