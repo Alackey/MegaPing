@@ -31,6 +31,12 @@
       <input type="submit" value="Submit">
     </form>
 
+    <form id="deleteForm" action="/searchterm" method="delete">
+      ID:<br>
+      <input id="deleteId" type="text" name="id"><br><br>
+      <input type="submit" value="Submit">
+    </form>
+
     <h1>Posts from reddit:</h1>
     <p><%= JSON.stringify(posts) %></p>
 
@@ -61,6 +67,20 @@
 
         var xhttp = new XMLHttpRequest();
         xhttp.open("PUT", "/searchterm", true);
+        xhttp.setRequestHeader("Content-type", "application/json");
+        xhttp.send(JSON.stringify({data: data}));
+      });
+
+      document.getElementById("deleteForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        var id = document.getElementById('deleteId').value;
+        var data = {
+          id: id
+        };
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("DELETE", "/searchterm", true);
         xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send(JSON.stringify({data: data}));
       });

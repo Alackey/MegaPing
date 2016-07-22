@@ -71,19 +71,16 @@ app.put('/searchterm', loginRequired, function(req, res) {
 });
 
 
-// /* DELETE: Delete SearchTerm */
-// app.put('/searchterm', loginRequired, function(req, res) {
-//   var { term, quality, id } = req.body.data;
-//
-//   models.SearchTerm.update({
-//     term: term,
-//     quality: quality
-//   },{
-//     where: {id: id}
-//   }).then(searchterm => {
-//     res.send(true);
-//   });
-// });
+/* DELETE: Delete SearchTerm */
+app.delete('/searchterm', loginRequired, function(req, res) {
+  var { id } = req.body.data;
+
+  models.SearchTerm.destroy({
+    where: {id: id}
+  }).then(searchterm => {
+    res.send(true);
+  });
+});
 
 
 /*
