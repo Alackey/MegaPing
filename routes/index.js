@@ -37,10 +37,18 @@ app.post('/searchterm', loginRequired, function(req, res) {
 
   if ('email' in req.body) {
     modelInfo.notifyMethod.email = req.body.email;
-  } else if ('reddit' in req.body) {
+  }
+  if ('reddit' in req.body) {
     modelInfo.notifyMethod.redditMsg = req.body.redditMsg;
-  } else if ('quality' in req.body) {
-    modelInfo.quality = quality;
+  }
+  if('quality' in req.body) {
+    let { quality } = req.body;
+
+    if (quality.charAt(quality.length - 1) === 'p') {
+      modelInfo.quality = quality.slice(0, quality.length - 1);
+    } else {
+      modelInfo.quality = quality;
+    }
   }
 
   let searchTerm = models.SearchTerm.build(modelInfo);
