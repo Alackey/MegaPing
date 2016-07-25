@@ -35,11 +35,11 @@ app.post('/searchterm', loginRequired, function(req, res) {
 
   modelInfo.term = req.body.term;
 
-  if (Object.prototype.hasOwnProperty.call(req.body, 'email')) {
+  if ('email' in req.body) {
     modelInfo.notifyMethod.email = req.body.email;
-  } else if (Object.prototype.hasOwnProperty.call(req.body, 'reddit')) {
+  } else if ('reddit' in req.body) {
     modelInfo.notifyMethod.redditMsg = req.body.redditMsg;
-  } else if (Object.prototype.hasOwnProperty.call(req.body, 'quality')) {
+  } else if ('quality' in req.body) {
     modelInfo.quality = quality;
   }
 
