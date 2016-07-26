@@ -7,6 +7,9 @@
   <link rel="stylesheet" href="/stylesheets/navbar.css">
   <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.0/react.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.0/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.16/browser.js"></script>
 </head>
 <body>
   <ul class="topnav" id="myTopnav">
@@ -29,10 +32,12 @@
         <div id="newPingBtn" class="textCenter">
           <p>New Ping</p>
         </div>
+        <div id="newPingContainer"></div>
       </div>
     </div>
   </div>
 
+  <script type="text/babel" src="javascripts/newPing.js"></script>
   <script src="/javascripts/navbar.js"></script>
 </body>
 </html>
