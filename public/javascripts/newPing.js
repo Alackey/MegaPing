@@ -11,7 +11,7 @@ var NewPingBox = React.createClass({
 
 var NewPingForm = React.createClass({
   getInitialState: function() {
-    return {term: '', notifyMethod: '', quality: ''};
+    return {term: '', notifyMethod: '', quality: undefined};
   },
   handleAuthorChange: function(e) {
       this.setState({term: e.target.value});
