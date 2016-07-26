@@ -9,7 +9,8 @@ ul.topnav {
 
 #navbarTitle {float: left;}
 
-.navbarLink {float: right;}
+.navbarLink {float: left;}
+#navbarLinkContainer {float: right;}
 
 ul.topnav li a {
   display: inline-block;
@@ -52,6 +53,9 @@ ul.topnav li.icon {display: none;}
       float: none !important;
   }
   .navbarLink {
+      display: none;
+  }
+  #navbarLinkContainer {
       float: none;
   }
 }
