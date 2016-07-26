@@ -8,9 +8,14 @@ var app = express();
 /* GET: Home Page */
 app.get('/', function(req, res, next) {
 
-  reddit.getPosts().then((posts) => {
-    res.render('index', {posts:posts, user: req.user});
-  });
+  if (req.isAuthenticated()) {
+    res.render('pings');
+  } else {
+    res.render('index', {posts: [], user: req.user});
+  }
+  // reddit.getPosts().then((posts) => {
+  //   res.render('index', {posts:posts, user: req.user});
+  // });
 });
 
 
