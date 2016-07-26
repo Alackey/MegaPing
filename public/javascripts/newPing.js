@@ -46,7 +46,6 @@ var NewPingForm = React.createClass({
         <input
           type="number"
           placeholder="Ex. 720"
-          value={this.state.quality}
           onChange={this.handleQualityChange}
           className="newPingInputQuality newPingInput"
         />
