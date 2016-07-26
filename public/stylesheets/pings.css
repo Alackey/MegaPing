@@ -10,6 +10,13 @@
 
 }
 
+.newPingInput {
+    display: block;
+}
+
+
+/* Globals */
+
 .textCenter {
     text-align: center;
 }
