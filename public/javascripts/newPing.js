@@ -31,23 +31,31 @@ var NewPingForm = React.createClass({
           placeholder="Term"
           value={this.state.term}
           onChange={this.handleAuthorChange}
-          className="newPingInputTerm newPingInput"
+          className="newPingInputTerm newPingInput newPingAllInput"
         />
         <h5>Notification Method</h5>
-        <span>Email: </span>
-        <input
-          type="text"
-          placeholder="Ex. test@test.com"
-          value={this.state.notifyMethod}
-          onChange={this.handleNotifyMethodChange}
-          className="newPingInputNotifyMethod"
-        />
+        <div className="row">
+          <div className="col-sm-1">
+            <div className="newPingInputNotifyMethodType">
+              <span>Email:</span>
+            </div>
+          </div>
+          <div className="col-sm-11">
+            <input
+              type="text"
+              placeholder="Ex. test@test.com"
+              value={this.state.notifyMethod}
+              onChange={this.handleNotifyMethodChange}
+              className="newPingInputNotifyMethod newPingAllInput"
+            />
+          </div>
+        </div>
         <h5>Quality</h5>
         <input
           type="number"
           placeholder="Ex. 720"
           onChange={this.handleQualityChange}
-          className="newPingInputQuality newPingInput"
+          className="newPingInputQuality newPingInput newPingAllInput"
         />
         <input type="submit" value="Ping" />
       </form>

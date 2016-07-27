@@ -14,6 +14,25 @@
     display: block;
 }
 
+.newPingAllInput {
+    width: 100%;
+    height: 30px;
+    border: 1 solid black;
+    border-radius: 5px;
+}
+
+.newPingInputNotifyMethodType {
+    height: 30px;
+    width: 100%;
+    display: table;
+}
+
+.newPingInputNotifyMethodType span {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 1.2em;
+}
+
 
 /* Globals */
 
